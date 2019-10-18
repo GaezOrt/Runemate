@@ -1,0 +1,24 @@
+<manifest>
+    <main-class>bot.fisher.Fisher</main-class>
+    <name>Fisher</name>
+    <tag-line>Fisher</tag-line><!--Max of 50 chars-->
+    <description>Fisher</description><!--Max of 110 chars-->
+    <version>1.0.2</version>
+    <compatibility>
+        <game-type>OSRS</game-type>
+
+    </compatibility>
+    <categories>
+        <category>FISHING</category>
+    </categories>
+    <!--Required to publish on the bot store-->
+    <internal-id>FISHING</internal-id>
+    <!--The rest are optional-->
+    <open-source>false</open-source>
+    <hidden>false</hidden> <!--If you need to hide it from the bot store for maintenance-->
+    <access>private</access>
+    <tags>
+        <tag>MONEY</tag>
+        <tag>PACK</tag>
+    </tags>
+</manifest>
