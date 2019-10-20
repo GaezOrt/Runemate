@@ -19,7 +19,7 @@ import java.util.Objects;
 public class Looter extends LoopingBot {
 
 
-    int adamantArrow= 0;
+    int adamantArrow;
     int x = 0;
     boolean gotoCenter = false;
     boolean clickOnDitch = false;
@@ -38,6 +38,7 @@ public class Looter extends LoopingBot {
     public void onStart(String... arguments) {
         Gui gui= new Gui();
         gui.gui();
+        adamantArrow= gui.getX();
     }
 
     @Override

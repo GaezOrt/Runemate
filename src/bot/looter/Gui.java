@@ -2,6 +2,7 @@ package bot.looter;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class Gui {
@@ -10,31 +11,29 @@ JCheckBox nameG;
 JCheckBox appearG;
 JCheckBox ironman;
 JFrame frame;
+int x;
+Looter looter= new Looter();
+    public int getX(){
+        return x;
+        }
+
     public void gui(){
 
         initComponents();
     }
     private void initComponents(){
-        nameG = new JCheckBox();
-        appearG = new JCheckBox();
-        ironman = new JCheckBox();
         frame = new JFrame();
-        frame.setTitle("Tutorial Island");
+        frame.setTitle("SLooter");
         frame.setAlwaysOnTop(true);
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        JLabel label = new JLabel("Random Name Generator?");
+        JLabel label = new JLabel("Amount of arrows");
         label.setBounds(17, 0, 200, 25);
         nameG.setBounds(185,-13,50,50);
 
-        JLabel label2 = new JLabel("Random Appearance Generator?");
-        label2.setBounds(17, 25, 200, 25);
+        JTextField label2 = new JTextField("Arrows amount");
+        label2.setBounds(17, 0, 200, 25);
         appearG.setBounds(225,12,50,50);
-
-        JLabel label3 = new JLabel("Ironman?");
-        label3.setBounds(17, 50, 200, 25);
-        ironman.setBounds(80,37,50,50);
-
 
 
         JButton button = new JButton();
@@ -45,7 +44,6 @@ JFrame frame;
         panel.add(label2);
         panel.add(nameG);
         panel.add(appearG);
-        panel.add(label3);
         panel.add(ironman);
         panel.add(button);
 
@@ -54,6 +52,15 @@ JFrame frame;
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(button.isEnabled()){
+                    String amountL=label2.getText();
+                    looter.adamantArrow=Integer.parseInt(amountL);
+                }
+            }
+        });
     }
     }
 
