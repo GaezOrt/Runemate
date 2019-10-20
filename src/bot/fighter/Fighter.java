@@ -718,7 +718,7 @@ public class Fighter extends LoopingBot
             cowsB=true;
         }
         initime = System.currentTimeMillis();
-        stopTime= Random.nextInt(160,180);
+        stopTime= Random.nextInt(170,180);
         CustomPlayerSense.initializeKeys();
         System.out.println("Start until " + stopTime);
 

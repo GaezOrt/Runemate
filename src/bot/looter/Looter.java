@@ -19,26 +19,28 @@ import java.util.Objects;
 public class Looter extends LoopingBot {
 
 
-    int adamantArrow;
-    int x = 0;
-    boolean gotoCenter = false;
-    boolean clickOnDitch = false;
-    boolean travelToZafeZone = false;
-    int z;
+    private int adamantArrow;
+    private boolean gotoCenter = false;
+    private boolean clickOnDitch = false;
+    private boolean travelToZafeZone = false;
+    private int z;
+
     public void setAdamantArrow(int adamantArrow) {
         this.adamantArrow = adamantArrow;
     }
+
     LooterAreas areas = new LooterAreas();
     LooterApi api = new LooterApi();
+    Gui gui= new Gui();
+
     private enum State {
         LOOT, BANK
     }
 
     @Override
     public void onStart(String... arguments) {
-        Gui gui= new Gui();
+       gui= new Gui();
         gui.gui();
-        adamantArrow= gui.getX();
     }
 
     @Override
@@ -114,9 +116,9 @@ public class Looter extends LoopingBot {
                     clickOnDitch = false;
                     api.travelTo(areas.getArea());
                 }
+                System.out.println("looting + "+adamantArrow);
                 break;
             case BANK:
-
                 System.out.println("Bank + "+adamantArrow);
                 if (Inventory.getItems("Adamant arrow").first() != null) {
                     if (travelToZafeZone && !areas.getSafeArea().contains(Players.getLocal()) && Inventory.getItems("Adamant arrow").first().getQuantity() >= adamantArrow) {
