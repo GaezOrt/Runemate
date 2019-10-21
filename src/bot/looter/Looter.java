@@ -7,6 +7,7 @@ import com.runemate.game.api.hybrid.local.hud.interfaces.Bank;
 import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
 import com.runemate.game.api.hybrid.local.hud.interfaces.SpriteItem;
 import com.runemate.game.api.hybrid.location.navigation.basic.BresenhamPath;
+import com.runemate.game.api.hybrid.location.navigation.basic.PredefinedPath;
 import com.runemate.game.api.hybrid.region.GameObjects;
 import com.runemate.game.api.hybrid.region.GroundItems;
 import com.runemate.game.api.hybrid.region.Npcs;
@@ -15,6 +16,7 @@ import com.runemate.game.api.script.Execution;
 import com.runemate.game.api.script.framework.LoopingBot;
 
 import java.util.Objects;
+
 
 public class Looter extends LoopingBot {
 
@@ -31,7 +33,6 @@ public class Looter extends LoopingBot {
 
     LooterAreas areas = new LooterAreas();
     LooterApi api = new LooterApi();
-    Gui gui= new Gui();
 
     private enum State {
         LOOT, BANK
@@ -39,7 +40,7 @@ public class Looter extends LoopingBot {
 
     @Override
     public void onStart(String... arguments) {
-       gui= new Gui();
+        Gui gui= new Gui(this);
         gui.gui();
     }
 
@@ -105,6 +106,7 @@ public class Looter extends LoopingBot {
                     clickOnDitch = true;
                 }
 
+
                 GameObject wildernessDitch2 = GameObjects.newQuery().names("Wilderness Ditch").results().nearest();
                 if (clickOnDitch && Inventory.isEmpty() && !areas.getSafeArea().contains(Players.getLocal())) {
                     if (wildernessDitch2 != null) {
@@ -117,7 +119,20 @@ public class Looter extends LoopingBot {
                     api.travelTo(areas.getArea());
                 }
                 System.out.println("looting + "+adamantArrow);
+
+               api.walkBackFromLumb();
+               if(areas.getBankArea().contains(Players.getLocal())){
+                   travelToZafeZone=true;
+               }
+               try {
+                   if (Players.getLocal().getAnimationId() == -1 && !Players.getLocal().isMoving() && areas.getBesideTheDitch().contains(Players.getLocal()) && Inventory.getItems("Adamant arrow").first().getQuantity() < adamantArrow) {
+                       wildernessDitch2.interact("Cross");
+                   }
+               }catch (NullPointerException e){
+
+               }
                 break;
+
             case BANK:
                 System.out.println("Bank + "+adamantArrow);
                 if (Inventory.getItems("Adamant arrow").first() != null) {
@@ -162,6 +177,7 @@ public class Looter extends LoopingBot {
                         clickOnDitch = true;
                     }
                 }
+                api.walkBackFromLumb();
 
                 break;
 
@@ -177,13 +193,13 @@ public class Looter extends LoopingBot {
 
         }
 
-                if (Inventory.isEmpty() ||  z<= adamantArrow) {
-                    return State.LOOT;
+        if (Inventory.isEmpty() ||  z<= adamantArrow ) {
+            return State.LOOT;
 
-                }
-            else {
-                    return State.BANK;
-                }
+        }
+        else {
+            return State.BANK;
+        }
 
     }
 }

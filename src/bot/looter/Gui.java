@@ -7,9 +7,11 @@ import java.awt.event.ActionListener;
 
 public class Gui {
 
-JFrame frame;
-Looter looter= new Looter();
-
+    JFrame frame;
+    Looter looter;
+    Gui(Looter looter) {
+        this.looter = looter;
+    }
     public void gui(){
 
         initComponents();
@@ -52,6 +54,6 @@ Looter looter= new Looter();
             }
         });
     }
-    }
+}
 
 
