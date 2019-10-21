@@ -120,17 +120,17 @@ public class Looter extends LoopingBot {
                 }
                 System.out.println("looting + "+adamantArrow);
 
-               api.walkBackFromLumb();
-               if(areas.getBankArea().contains(Players.getLocal())){
-                   travelToZafeZone=true;
-               }
-               try {
-                   if (Players.getLocal().getAnimationId() == -1 && !Players.getLocal().isMoving() && areas.getBesideTheDitch().contains(Players.getLocal()) && Inventory.getItems("Adamant arrow").first().getQuantity() < adamantArrow) {
-                       wildernessDitch2.interact("Cross");
-                   }
-               }catch (NullPointerException e){
+                api.walkBackFromLumb();
+                if(areas.getBankArea().contains(Players.getLocal())){
+                    travelToZafeZone=true;
+                }
+                try {
+                    if (Players.getLocal().getAnimationId() == -1 && !Players.getLocal().isMoving() && areas.getBesideTheDitch().contains(Players.getLocal()) && Inventory.getItems("Adamant arrow").first().getQuantity() < adamantArrow) {
+                        wildernessDitch2.interact("Cross");
+                    }
+                }catch (NullPointerException e){
 
-               }
+                }
                 break;
 
             case BANK:

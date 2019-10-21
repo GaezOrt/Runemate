@@ -2,7 +2,7 @@
     <main-class>bot.looter.Looter</main-class>
     <name>Looter</name>
     <tag-line>Looter</tag-line><!--Max of 50 chars-->
-    <description>Fisher</description><!--Max of 110 chars-->
+    <description>Loot adamant arrows. If it dies it comes back to keep looting.</description><!--Max of 110 chars-->
     <version>1.0.2</version>
     <compatibility>
         <game-type>OSRS</game-type>
@@ -12,12 +12,13 @@
         <category>Moneymaking</category>
     </categories>
     <!--Required to publish on the bot store-->
-    <internal-id>FISHING</internal-id>
+    <internal-id>Loting</internal-id>
     <!--The rest are optional-->
     <open-source>false</open-source>
     <hidden>false</hidden> <!--If you need to hide it from the bot store for maintenance-->
-    <access>private</access>
+    <access>public</access>
     <tags>
+        <price>0.005</price>
         <tag>MONEY</tag>
         <tag>PACK</tag>
     </tags>
