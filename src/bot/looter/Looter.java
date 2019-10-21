@@ -62,7 +62,7 @@ public class Looter extends LoopingBot {
                 if (addy != null) {
                     if ((addy.getQuantity() <= adamantArrow) || Inventory.isEmpty()) {
 
-                        if (Players.getLocal().getHealthGauge() == null && !Players.getLocal().isMoving()) {
+                        if (!areas.getBesideTheDitch().contains( GroundItems.newQuery().names("Adamant arrow").results().nearest())&&Players.getLocal().getHealthGauge() == null && !Players.getLocal().isMoving()) {
                             api.pickUpArrows();
                             travelToZafeZone = true;
                             System.out.println("Grabbing arrows");
