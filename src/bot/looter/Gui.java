@@ -5,18 +5,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Gui {
+ class Gui {
 
-    JFrame frame;
+
+
     Looter looter;
     Gui(Looter looter) {
         this.looter = looter;
     }
+
     public void gui(){
 
         initComponents();
     }
     private void initComponents(){
+        JFrame frame;
         frame = new JFrame();
         frame.setTitle("SLooter");
         frame.setAlwaysOnTop(true);
