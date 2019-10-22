@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Spearless.iml" filepath="$PROJECT_DIR$/Spearless.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Rune/Spearless.iml" filepath="$PROJECT_DIR$/../Rune/Spearless.iml" />
     </modules>
   </component>
 </project>
