@@ -212,7 +212,7 @@ public class Api extends LoopingBot {
         if (Players.getLocal().getHealthGauge() == null && !Players.getLocal().isMoving()) {
             try {
                 if (goblin.getHealthGauge() == null) {
-                    if (goblin.isVisible()) {
+
                         goblin.interact("Attack");
                         Execution.delay(250, Random.nextInt(400, 900));
 
@@ -221,7 +221,7 @@ public class Api extends LoopingBot {
                             System.out.println("Clicked for 2nd time");
                             Execution.delay(399, Random.nextInt(400, 700));
                         }
-                    }
+
                 }
             } catch (NullPointerException e) {
 
@@ -508,6 +508,19 @@ try {
         }
     }
 
+    public void attackWithMagic(String n1, String n2){
+        Npc goblin = Npcs.newQuery().names(n1,n2).results().random();
+        try {
+            if (goblin.getHealthGauge() == null&& Interfaces.newQuery().texts("Magic XP").results().isEmpty() && Players.getLocal().getAnimationId()!=1162 && Players.getLocal().getHealthGauge() == null && !Players.getLocal().isMoving()) {
+                goblin.interact("Attack");
+                Execution.delay(399, 800);
+
+            }
+        }catch(NullPointerException e){
+
+        }
+
+    }
     public void attackSlowly(String n1, String n2) {
         Npc goblin = Npcs.newQuery().names(n1,n2).results().random();
         try {

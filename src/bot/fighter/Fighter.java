@@ -48,6 +48,7 @@ public class Fighter extends LoopingBot
     boolean attackNormalB=false;
     boolean attackSlowerB=false;
     boolean attackSlowerSlowerB=false;
+    boolean attackWithMagicB=false;
 
 
     boolean clickRunningB=false;
@@ -156,6 +157,8 @@ public class Fighter extends LoopingBot
         JCheckBox attackSlowerFirst= new JCheckBox("Attack normaly");
         JCheckBox attackSlower=new JCheckBox("Attack slower");
         JCheckBox attackSlowerSlower=new JCheckBox("Attack slower slower");
+        JCheckBox attackwithMagic= new JCheckBox("Attack with magic");
+
 
 
 
@@ -211,6 +214,7 @@ public class Fighter extends LoopingBot
         panelAntiban.add(attackSlowerFirst);
         panelAntiban.add(attackSlowerSlower);
         panelAntiban.add(attackSlower);
+        panelAntiban.add(attackwithMagic);
 
         panelAntiban.add(sleepRandomly3045);
         panelAntiban.add(sleepRandomly4560);
@@ -253,6 +257,16 @@ public class Fighter extends LoopingBot
         frame.setVisible(true);
 
 
+        attackwithMagic.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(attackwithMagic.isSelected()){
+                    attackWithMagicB=true;
+                }else{
+                    attackWithMagicB=false;
+                }
+            }
+        });
         clickOnCenterFrogs.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -743,6 +757,9 @@ public class Fighter extends LoopingBot
                 Npc x = Npcs.newQuery().names("Cow", "Cow calf").results().nearest();
 
 
+                if(attackWithMagicB){
+                    api.attackWithMagic("Cow", "Cow calf");
+                }
                 if(xpDropsB){
                     api.closeXpShower();
                 }
@@ -902,6 +919,9 @@ public class Fighter extends LoopingBot
 
                 Npc frog = Npcs.newQuery().names("Giant frog", "Big frog", "Frog").results().nearest();
 
+                if(attackWithMagicB){
+                    api.attackWithMagic("Giant frog", "Big frog");
+                }
                 if(clickOnCenterB){
                     api.clickOnCenter();
                 }
